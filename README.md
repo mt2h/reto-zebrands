@@ -25,8 +25,7 @@ python3 server.py
 ### test simple API REST with Docker
 
 ```bash
-#this test is without the database configuration 
-#this test is without the database configuration
+#this test in Docker without the database configuration
 
 docker build -t retozebrands .
 docker run --name retozebrands-app -p 5000:5000 retozebrands
