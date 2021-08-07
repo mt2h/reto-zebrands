@@ -16,9 +16,11 @@ DOMAIN = {
 
 SETTINGS = {
     'DOMAIN': DOMAIN,
+    'MONGO_HOST': 'localhost',
+    'MONGO_PORT': 27017,
+    'MONGO_DBNAME': 'zebrands',
     'RESOURCE_METHODS': ['GET', 'POST', 'DELETE'], #CRUD
     'PAGINATION': False, #enable pagination whitout limit
-    'HATEOAS': True, #view data product schema when there aren't records 
     'DEBUG': True, #enable debbing in log API
     'XML': False, #change XML to JSON format
 }
