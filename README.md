@@ -6,6 +6,12 @@ API RESR used for this project is Eve Framework developed from python
 
 Link: https://docs.python-eve.org/en/stable/
 
+## Note
+
+for this project I created a VPS in my personal domain
+the VPS is: retozebrands.mt2h.cl
+all content for tests is inside in this VPS 
+
 ## TESTS FROM THE START RETO 
 
 ### test simple API REST in python
@@ -22,6 +28,7 @@ python3 server.py
 #this test is without the database configuration 
 #this test is without the database configuration
 
-docker build -t retozebrands . 
-docker run -p 5000:5000 retozebrands
+docker build -t retozebrands .
+docker run --name retozebrands-app -p 5000:5000 retozebrands
+curl http://localhost:5000 | jq
 ```
