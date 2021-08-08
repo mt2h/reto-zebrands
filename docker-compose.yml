@@ -1,0 +1,20 @@
+version: '3.6'
+
+services:
+  api:
+    build: .
+    restart: unless-stopped
+    ports:
+      - 5000:5000
+    environment:
+      - MONGO_URI=mongodb://mongo/db
+    container_name: retozebrands-app
+
+  mongo:
+    image: mongo:3.6
+    restart: unless-stopped
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongo:/data/db
+    container_name: mongo-db

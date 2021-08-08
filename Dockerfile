@@ -1,4 +1,4 @@
-FROM python:3.8.10-alpine
+FROM python:3.8-alpine
 
 #create user for run app
 RUN adduser --disabled-password --gecos '' zebrands

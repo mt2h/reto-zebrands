@@ -1,3 +1,5 @@
+import os
+
 SCHEMA = {
     'item_title': 'Product data ',
     'schema': {
@@ -16,9 +18,7 @@ DOMAIN = {
 
 SETTINGS = {
     'DOMAIN': DOMAIN,
-    #'MONGO_HOST': 'localhost',
-    #'MONGO_PORT': 27017,
-    #'MONGO_DBNAME': 'zebrands',
+    'MONGO_URI': os.getenv('MONGO_URI'), #conection database in mongodb docker
     'RESOURCE_METHODS': ['GET', 'POST', 'DELETE'], #CRUD
     'PAGINATION': False, #enable pagination whitout limit
     'DEBUG': True, #enable debbing in log API

@@ -14,7 +14,7 @@ all content for tests is inside in this VPS
 
 ## Test from the start reto 
 
-### Test simple API REST in python
+### Test simple API REST in Python
 
 ```bash
 #this test is without the database configuration 
@@ -22,12 +22,26 @@ all content for tests is inside in this VPS
 python3 server.py
 ```
 
-### Test simple API REST with Docker
+### Test simple API REST in Docker
 
 ```bash
 #this test in Docker without the database configuration
 
 docker build -t retozebrands .
+
 docker run --name retozebrands-app -p 5000:5000 retozebrands
+
 curl http://localhost:5000 | jq
 ```
+
+### Test API REST in Docker-Compose with MongoDB Database
+
+```bash
+docker-compose up -d
+
+curl -d '[{"sku": "test","name": "test","brand": "test","model": "test","price": 0,"description": "test"}]' -H 'Content-Type: application/json' http://localhost:5000/product
+
+curl http://localhost:5000/product | jq
+```
+
+

@@ -1,4 +1,7 @@
 .cache
 .Trash-*
+
 __pycache__/
+mongo/
+
 README.md.backup
