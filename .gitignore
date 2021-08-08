@@ -8,3 +8,6 @@ README.md.backup
 .terraform.lock.hcl
 terraform/terraform.tfstate*
 .terraform/
+terraform.tfstate
+
+ssh-key-reto.pem

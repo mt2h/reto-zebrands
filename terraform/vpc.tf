@@ -7,13 +7,12 @@ resource "aws_vpc" "vpc-reto" {
     }
 }
 
-resource "aws_subnet" "subnets-reto" {
-      count = length(data.aws_availability_zones.azs.names)
+resource "aws_subnet" "subnet-reto" {
       vpc_id = "${aws_vpc.vpc-reto.id}"
-      cidr_block = "${element(var.subnets_cidr, count.index)}"
-      availability_zone = "${element(data.aws_availability_zones.azs.names, count.index)}"
+      cidr_block = "${var.subnet_cidr}"
+      availability_zone = "${var.availability_zone}"
       tags = {
-        Name = "Subnet ${count.index + 1} Reto Zebrands"
+        Name = "Subnet Reto Zebrands"
       }
 }
 
@@ -36,7 +35,6 @@ resource "aws_route_table" "rt-public-reto" {
 }
 
 resource "aws_route_table_association" "rta-public-reto" {
-    count = length(var.subnets_cidr)
-    subnet_id = "${element(aws_subnet.subnets-reto.*.id, count.index)}"
+    subnet_id = "${aws_subnet.subnet-reto.id}"
     route_table_id = "${aws_route_table.rt-public-reto.id}"
 }
