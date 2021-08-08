@@ -60,3 +60,21 @@ docker push mt2h/api-retozebrands:latest
 Example in action
 
 ![NodeJs](./img/docker-compose.png)
+
+### Test API REST in Kubernetes
+
+there are 3 files that must be executed in order in **k8s folder**:
+
+- Repository:
+	+ k8s:
+		- 1-namespace.yaml: set namespace project, the name is: ""zebrands"
+		- 2-database.yaml: set service database with persistent volume
+
+```bash
+#Step 1
+kubectl apply -f k8s/1-namespace.yaml
+
+#Step 2
+kubectl apply -f k8s/2-database.yaml
+
+```
