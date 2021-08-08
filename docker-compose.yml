@@ -2,7 +2,8 @@ version: '3.6'
 
 services:
   api:
-    build: .
+    #build: .
+    image: mt2h/api-retozebrands:latest #image after tag in personal DockerHub
     restart: unless-stopped
     ports:
       - 5000:5000
