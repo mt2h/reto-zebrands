@@ -12,9 +12,9 @@ for this project I created a VPS in my personal domain
 the VPS is: retozebrands.mt2h.cl
 all content for tests is inside in this VPS 
 
-## TESTS FROM THE START RETO 
+## Test from the start reto 
 
-### test simple API REST in python
+### Test simple API REST in python
 
 ```bash
 #this test is without the database configuration 
@@ -22,7 +22,7 @@ all content for tests is inside in this VPS
 python3 server.py
 ```
 
-### test simple API REST with Docker
+### Test simple API REST with Docker
 
 ```bash
 #this test in Docker without the database configuration
