@@ -31,7 +31,7 @@ docker build -t retozebrands .
 
 docker run --name retozebrands-app -p 5000:5000 retozebrands
 
-curl http://localhost:5000 | jq
+curl http://retozebrands.mt2h.cl:5000 | jq
 ```
 
 ### Test API REST in Docker-Compose with MongoDB Database
@@ -39,9 +39,9 @@ curl http://localhost:5000 | jq
 ```bash
 docker-compose up -d
 
-curl -d '[{"sku": "test","name": "test","brand": "test","model": "test","price": 0,"description": "test"}]' -H 'Content-Type: application/json' http://localhost:5000/product
+curl -d '[{"sku": "test","name": "test","brand": "test","model": "test","price": 0,"description": "test"}]' -H 'Content-Type: application/json' http://retozebrands.mt2h.cl:5000/product
 
-curl http://localhost:5000/product | jq
+curl http://retozebrands.mt2h.cl:5000/product | jq
 ```
 
 
