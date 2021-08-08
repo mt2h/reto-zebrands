@@ -61,7 +61,7 @@ Example in action
 
 ![NodeJs](./img/docker-compose.png)
 
-### Test API REST in Kubernetes
+### Test API REST in Cluster Minikube of Kubernetes
 
 there are 3 files that must be executed in order in **k8s folder**:
 
