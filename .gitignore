@@ -5,3 +5,6 @@ __pycache__/
 mongo/
 
 README.md.backup
+.terraform.lock.hcl
+terraform/terraform.tfstate*
+.terraform/
