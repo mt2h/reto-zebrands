@@ -77,4 +77,11 @@ kubectl apply -f k8s/1-namespace.yaml
 #Step 2
 kubectl apply -f k8s/2-database.yaml
 
+#Step 3
+kubectl ´apply -f k8s/3-api-rest.yaml
+
 ```
+
+Example in action
+
+![NodeJs](./img/service_api_k8s.png)
