@@ -22,7 +22,7 @@ All content for tests is inside in this VPS
 python3 server.py
 ```
 
-![NodeJs](./img/api_simple_test.png)
+![API_REST_Python](./img/api_simple_test.png)
 
 ### Test simple API REST in Docker
 
@@ -59,7 +59,7 @@ docker push mt2h/api-retozebrands:latest
 
 Example in action
 
-![NodeJs](./img/docker-compose.png)
+![Docker-Compose](./img/docker-compose.png)
 
 ### Test API REST in Cluster Minikube of Kubernetes
 
@@ -84,4 +84,28 @@ kubectl ´apply -f k8s/3-api-rest.yaml
 
 Example in action
 
-![NodeJs](./img/service_api_k8s.png)
+![Service_Kubernetes](./img/service_api_k8s.png)
+
+### Test API REST in Cluster Minikube of Terraform
+
+there are 3 files that must be executed in order in **k8s folder**:
+
+- Repository:
+	+ terraform:
+		- variables.tf: set variables for resources
+		- provider.tf: set provider and region in AWS"
+		- vpc.tf: create VPC section: VPC, Subnet, Gateway, Route Table and Associations
+		- ec2.tf: create EC2 section: SSH Key for instance, Simple Security Group and Instance on Ubuntu 20.04 LTS
+		- ssh-key-reto.pem*: private and public key for instance
+
+```bash
+#Set provider and dependencies for Terraform
+Terraform init
+
+#View resources to create
+terraform plan
+
+#Create all resources in my personal account AWS
+terraform apply -auto-approve
+
+```
