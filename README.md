@@ -86,7 +86,7 @@ Example in action
 
 ![Service_Kubernetes](./img/service_api_k8s.png)
 
-### Test API REST in Cluster Minikube of Terraform
+### Test API REST in Cluster Minikube of Terraform for AWS
 
 there are some files in this directory called **terraform**:
 
