@@ -50,16 +50,45 @@ resource "aws_security_group" "sg-reto" {
 
 resource "aws_instance" "instance-reto" {
     ami = "${var.ami_id}"
-    instance_type = "t2.micro"
+    instance_type = "t3.small"
     subnet_id = "${aws_subnet.subnet-reto.id}"
     associate_public_ip_address = true
     private_ip = "${var.private_ip_instance}"
+    key_name = "${aws_key_pair.key-reto.id}"
     vpc_security_group_ids = [
       "${aws_security_group.sg-reto.id}"
     ]
-    key_name = "${aws_key_pair.key-reto.id}"
-    tags = {
-      Name = "Instance for checking Reto Zebrands"
-      Env = "testing"
+    user_data = "${file("./userdata.sh")}"
+
+    provisioner "file" {
+      source      = "../k8s"
+      destination = "/home/ubuntu/k8s"
+      connection {
+        type        = "ssh"
+        user        = "ubuntu"
+        private_key = "${file("./ssh-key-reto.pem")}"
+        host        = "${self.public_dns}"
+      }
     }
+
+    tags = {
+      Name = "Instance Reto Zebrands"
+      Env = "Dev"
+    }
+}
+
+resource "aws_ebs_volume" "vol-reto" {
+  availability_zone = "${var.availability_zone}"
+  size = 8
+  type = "gp2"
+
+  tags = {
+    Name = "Minikube"
+  }
+}
+
+resource "aws_volume_attachment" "vatt-instance-reto" {
+  device_name = "/dev/sdh"
+  volume_id   = "${aws_ebs_volume.vol-reto.id}"
+  instance_id = "${aws_instance.instance-reto.id}"
 }
