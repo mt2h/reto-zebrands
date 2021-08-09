@@ -88,7 +88,7 @@ Example in action
 
 ### Test API REST in Cluster Minikube of Terraform
 
-there are 3 files that must be executed in order in **k8s folder**:
+there are some files in this directory called **terraform**:
 
 - Repository:
 	+ terraform:
