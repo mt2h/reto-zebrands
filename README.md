@@ -10,7 +10,47 @@ Link: https://docs.python-eve.org/en/stable/
 
 For this project I created a VPS in my personal domain<br/>
 The VPS for check tests is: **retozebrands.mt2h.cl**<br/>
-All content for tests is inside in this VPS 
+All content for tests is inside in this VPS.
+
+
+The instance in EC2 AWS created after run command "apply" in terraform is **http://ec2-3-144-95-221.us-east-2.compute.amazonaws.com**<br />
+In this instance AWS there is the API REST running in a minikube cluster of Kubernetes<br />
+The minikube cluster is installed in the same instance AWS (on-premise)<br />
+The minikube cluster is installed when creating the instance with terraform 
+
+## How to see the API application running 
+
+The API structure is in JSON.<br /> 
+
+see the following link: http://ec2-3-144-95-221.us-east-2.compute.amazonaws.com:30683/product
+<br /><br />
+_Recommended: view it with firefox, this because firefox shows nice structure of JSON_
+<br ><br >
+can also be seen with curl 
+
+```bash
+curl http://ec2-3-144-95-221.us-east-2.compute.amazonaws.com:30683/product?pretty
+```
+
+the link shows all product data (currently there is only one)
+
+## Test for insert a new data to API application
+
+you need to send the data structure in JSON.
+<br />
+the following example is with a command in curl 
+
+```bash
+curl -d '[{"sku": "new_test","name": "new_test","brand": "new_test","model": "new_test","price": 0,"description": "new_test"}]' -H 'Content-Type: application/json' http://ec2-3-144-95-221.us-east-2.compute.amazonaws.com:30683/product
+
+#then you can check the new record list of all data 
+curl http://ec2-3-144-95-221.us-east-2.compute.amazonaws.com:30683/product?pretty
+```
+
+<br />
+Next, the step by step of how the project was created
+<br />
+
 
 ## Test from the start reto 
 
@@ -119,3 +159,19 @@ terraform plan
 terraform apply -auto-approve
 
 ```
+
+Example in action
+
+Instance created after run terraform apply
+
+![Instance_AWS](./img/instance.png)
+
+
+Api Run in Instance AWS
+![Instance_Running](./img/api_instance.png)
+
+View in Firefox Browser as JSON
+![View_Data_API_from_Instance](./img/view_web.png)
+
+Struct resources created in AWS with Terraform
+![SCHEMA_AWS](./img/graph.svg)
