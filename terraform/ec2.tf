@@ -5,7 +5,7 @@ resource "aws_key_pair" "key-reto" {
 
 resource "aws_security_group" "sg-reto" {
   name = "security_group_reto"
-  description = "Allow Ping, SSH, HTTP and HTTPS"
+  description = "Allow Port to Connect to Isntance"
   vpc_id = "${aws_vpc.vpc-reto.id}"
 
   ingress {
@@ -28,6 +28,14 @@ resource "aws_security_group" "sg-reto" {
     protocol = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
+
+  #Port for Ingress Controller Nginx Kubernetes
+  ingress {
+    from_port   = 30000
+    to_port     = 32000
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }  
 
   ingress {
     from_port = -1

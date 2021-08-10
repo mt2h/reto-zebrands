@@ -102,4 +102,6 @@ sudo kubectl apply -f /home/ubuntu/k8s/1-namespace.yaml
 sudo kubectl apply -f /home/ubuntu/k8s/2-database.yaml
 sudo kubectl apply -f /home/ubuntu/k8s/3-api-rest.yaml
 sudo kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.45.0/deploy/static/provider/baremetal/deploy.yaml
+sleep 180
 sudo kubectl apply -f /home/ubuntu/k8s/4-ingress-rules.yaml
+
