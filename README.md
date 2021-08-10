@@ -63,12 +63,14 @@ Example in action
 
 ### Test API REST in Cluster Minikube of Kubernetes
 
-there are 3 files that must be executed in order in **k8s folder**:
+there are 4 files that must be executed in order in **k8s folder**:
 
 - Repository:
 	+ k8s:
 		- 1-namespace.yaml: set namespace project, the name is: ""zebrands"
 		- 2-database.yaml: set service database with persistent volume
+ 		- 3-api-rest.yaml: set API REST depends of database
+ 		- 4-ingress-rules.yaml: Rules Load Balancer with Nginx Rules
 
 ```bash
 #Step 1
@@ -78,7 +80,15 @@ kubectl apply -f k8s/1-namespace.yaml
 kubectl apply -f k8s/2-database.yaml
 
 #Step 3
-kubectl ´apply -f k8s/3-api-rest.yaml
+kubectl apply -f k8s/3-api-rest.yaml
+
+#Step 4
+
+#Install Ingress Nginx Controller
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.45.0/deploy/static/provider/baremetal/deploy.yaml
+
+#apply rules
+kubectl apply -f k8s/4-ingress-rules.yaml
 
 ```
 
